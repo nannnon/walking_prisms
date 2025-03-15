@@ -4,6 +4,7 @@ final float Gap = 1;
 final int PrismsNum = round(FieldWidth * FieldHeight * 0.98);
 
 ArrayList<Prism> g_prisms = new ArrayList<Prism>();
+int g_counter = 0;
 float g_t = 0;
 
 void setup()
@@ -37,9 +38,21 @@ void draw()
   float h = 1;
   float d = FieldHeight * (Prism.Length + Gap) - Gap;
   
-  g_t += 0.005;
-  float cameraX = w / 2 + cos(g_t) * 50;
-  float cameraZ = d / 2 + sin(g_t) * 50;
+  float cameraX = 0;
+  float cameraZ = 0;
+  if (g_counter < 200)
+  {
+    ++g_counter;
+    final float T = 0;
+    cameraX = w / 2 + cos(T) * 50;
+    cameraZ = d / 2 + sin(T) * 50;
+  }
+  else
+  {
+    g_t += 0.005;
+    cameraX = w / 2 + cos(g_t) * 50;
+    cameraZ = d / 2 + sin(g_t) * 50;
+  }
   camera(cameraX, -30, cameraZ, w / 2, 0, d / 2, 0, 1, 0);
   
   // 地面
@@ -55,4 +68,6 @@ void draw()
     p.Update();
     p.Draw();
   }
+  
+  saveFrame("frames/######.png");
 }

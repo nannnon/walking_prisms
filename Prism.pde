@@ -79,7 +79,7 @@ class Prism
         default : print("Invalid dir"); break;
       }
       
-      // フィールド内かどうか
+      // 移動先がフィールド内かどうか
       int tarx = _x + dx;
       int tarz = _z + dz;
       if (tarx >= 0 && tarx < FieldWidth &&
@@ -104,9 +104,9 @@ class Prism
     pushMatrix();
     
     fill(_color);
-    final float h = 3;
-    translate(_xf + Length / 2, -h / 2, _zf + Length / 2);
-    box(Length, h, Length);
+    final float H = 1;
+    translate(_xf + Length / 2, -H / 2, _zf + Length / 2);
+    box(Length, H, Length);
     
     popMatrix();
   }
